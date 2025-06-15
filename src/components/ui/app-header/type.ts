@@ -1,6 +1,4 @@
 export type TAppHeaderUIProps = {
+  pathname?: string;
   userName: string | undefined;
-  onProfileClick: () => void;
-  onFeedClick: () => void;
-  onConstructorClick: () => void;
 };

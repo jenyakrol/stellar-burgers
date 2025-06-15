@@ -3,11 +3,12 @@ import { getAuth, getUser, getUserAction } from '@slices/userSlice';
 import { useDispatch, useSelector } from '@store';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 export const Profile: FC = () => {
   const dispatch = useDispatch();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUserAction());
@@ -15,7 +16,15 @@ export const Profile: FC = () => {
 
   const auth = useSelector(getAuth);
 
-  if (!auth) return <Navigate to='/login' />;
+  useEffect(() => {
+    if (!auth) {
+      navigate('/login', {
+        state: {
+          from: pathname
+        }
+      });
+    }
+  }, [auth]);
 
   /** TODO: взять переменную из стора */
   const user = useSelector(getUser);

@@ -1,7 +1,7 @@
 import { ProfileOrdersUI } from '@ui-pages';
 import { TOrder } from '@utils-types';
 import { FC, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '@store';
 import { getAuth, getUserAction } from '@slices/userSlice';
 import {
@@ -11,6 +11,8 @@ import {
 
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(getUserAction());
@@ -19,7 +21,16 @@ export const ProfileOrders: FC = () => {
 
   const auth = useSelector(getAuth);
 
-  if (!auth) return <Navigate to='/login' />;
+  useEffect(() => {
+    if (!auth) {
+      navigate('/login', {
+        state: {
+          from: pathname
+        }
+      });
+    }
+  }, [auth]);
+
   /** TODO: взять переменную из стора */
   const orders: TOrder[] = useSelector(getUserOrdersHistory);
 

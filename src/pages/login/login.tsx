@@ -2,7 +2,7 @@ import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { LoginUI } from '@ui-pages';
 import { useDispatch, useSelector } from '@store';
 import { getAuth, setUser } from '@slices/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { loginUserApi } from '@api';
 import { setCookie } from '@utils-cookie';
 export const Login: FC = () => {
@@ -11,12 +11,13 @@ export const Login: FC = () => {
   const [errorText, setErrorText] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const auth = useSelector(getAuth);
 
   useEffect(() => {
     if (auth) {
-      navigate('/');
+      navigate(state?.from || '/');
     }
   }, [auth]);
 
