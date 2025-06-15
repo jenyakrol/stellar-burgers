@@ -1,12 +1,24 @@
+import { updateUserApi } from '@api';
+import { getAuth, getUser, getUserAction } from '@slices/userSlice';
+import { useDispatch, useSelector } from '@store';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 
 export const Profile: FC = () => {
+  const dispatch = useDispatch();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    dispatch(getUserAction());
+  }, []);
+
+  const auth = useSelector(getAuth);
+
+  if (!auth) return <Navigate to='/login' />;
+
   /** TODO: взять переменную из стора */
-  const user = {
-    name: '',
-    email: ''
-  };
+  const user = useSelector(getUser);
 
   const [formValue, setFormValue] = useState({
     name: user.name,
@@ -17,8 +29,8 @@ export const Profile: FC = () => {
   useEffect(() => {
     setFormValue((prevState) => ({
       ...prevState,
-      name: user?.name || '',
-      email: user?.email || ''
+      name: user.name || '',
+      email: user.email || ''
     }));
   }, [user]);
 
@@ -29,6 +41,9 @@ export const Profile: FC = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+
+    updateUserApi(formValue).then(() => dispatch(getUserAction()));
+    setFormValue((prevState) => ({ ...prevState, password: '' }));
   };
 
   const handleCancel = (e: SyntheticEvent) => {
@@ -56,6 +71,4 @@ export const Profile: FC = () => {
       handleInputChange={handleInputChange}
     />
   );
-
-  return null;
 };
