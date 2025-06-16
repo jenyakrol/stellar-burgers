@@ -15,11 +15,10 @@ import styles from './app.module.css';
 
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from '@store';
+import { useDispatch, useSelector } from '@store';
 import { useEffect } from 'react';
 import { getIngredients } from '@slices/ingredientsSlice';
 import { getUserAction } from '@slices/userSlice';
-import { useSelector } from 'react-redux';
 import {
   getCurrentOpenedOrder,
   setCurrenOpenedOrder

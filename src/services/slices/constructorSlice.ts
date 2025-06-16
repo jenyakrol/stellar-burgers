@@ -7,27 +7,27 @@ import {
 
 type ConstructorState = {
   constructorItems: ConstructorItems;
-  currentIngredientId: number;
 };
 
 const initialState: ConstructorState = {
   constructorItems: {
     bun: null,
     ingredients: []
-  },
-  currentIngredientId: 0
+  }
 };
 
 export const constructorSlice = createSlice({
   name: 'burger-constructor',
   initialState,
   reducers: {
-    addConstructorItem: (state, { payload }: PayloadAction<TIngredient>) => {
-      const newIngredient = { ...payload, id: `${state.currentIngredientId}` };
-      state.currentIngredientId++;
-
-      if (payload.type === 'bun') state.constructorItems.bun = newIngredient;
-      else state.constructorItems.ingredients?.push(newIngredient);
+    addConstructorItem: {
+      reducer: (state, { payload }: PayloadAction<TConstructorIngredient>) => {
+        if (payload.type === 'bun') state.constructorItems.bun = payload;
+        else state.constructorItems.ingredients?.push(payload);
+      },
+      prepare: (ingredient: TIngredient) => ({
+        payload: { ...ingredient, id: crypto.randomUUID() }
+      })
     },
     removeConstructorItem: (
       state,

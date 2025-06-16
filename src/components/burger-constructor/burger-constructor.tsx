@@ -1,10 +1,9 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { useSelector } from 'react-redux';
 import { getAuth } from '@slices/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from '@store';
+import { useDispatch, useSelector } from '@store';
 import { getConstructorItems } from '@slices/constructorSlice';
 import {
   getOrderModalData,

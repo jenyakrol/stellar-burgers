@@ -38,9 +38,9 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ pathname, userName }) => (
             <p className='text text_type_main-default ml-2'>Лента заказов</p>
           </Link>
         </div>
-        <div className={styles.logo}>
+        <Link to={'/'} className={styles.logo}>
           <Logo className='' />
-        </div>
+        </Link>
         <Link
           to='/profile'
           className={clsx(
