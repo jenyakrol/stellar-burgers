@@ -1,0 +1,25 @@
+.container {
+  padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;  
+}
+
+.title-number {
+  font-family: Iceland;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.title-text {
+  font-family: 'JetBrains Mono';
+  font-size: 40px;
+  font-weight: bold;
+}
