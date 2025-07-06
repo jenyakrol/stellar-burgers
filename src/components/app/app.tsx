@@ -17,12 +17,12 @@ import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '@store';
 import { useEffect } from 'react';
-import { getIngredients } from '@slices/ingredientsSlice';
-import { getUserAction } from '@slices/userSlice';
+import { getIngredients } from '@slices/ingredientsSlice/ingredientsSlice';
+import { getUserAction } from '@slices/userSlice/userSlice';
 import {
   getCurrentOpenedOrder,
   setCurrenOpenedOrder
-} from '@slices/ordersHistorySlice';
+} from '@slices/ordersHistorySlice/ordersHistorySlice';
 
 const App = () => {
   const dispatch = useDispatch();

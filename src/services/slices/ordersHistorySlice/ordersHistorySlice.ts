@@ -62,7 +62,9 @@ export const ordersHistorySlice = createSlice({
       .addCase(
         getFeedOrders.fulfilled,
         (state, { payload }: PayloadAction<TFeedsResponse>) => {
-          state.feed = payload;
+          state.feed.orders = payload.orders;
+          state.feed.total = payload.total;
+          state.feed.totalToday = payload.totalToday;
         }
       )
       .addCase(

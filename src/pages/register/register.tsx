@@ -1,7 +1,7 @@
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { useDispatch, useSelector } from '@store';
-import { getAuth, setUser } from '@slices/userSlice';
+import { getAuth, setUser } from '@slices/userSlice/userSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { registerUserApi } from '@api';
 import { setCookie } from '@utils-cookie';

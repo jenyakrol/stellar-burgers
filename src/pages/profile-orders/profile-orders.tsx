@@ -3,11 +3,11 @@ import { TOrder } from '@utils-types';
 import { FC, useEffect } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '@store';
-import { getAuth, getUserAction } from '@slices/userSlice';
+import { getAuth, getUserAction } from '@slices/userSlice/userSlice';
 import {
   getUserOrders,
   getUserOrdersHistory
-} from '@slices/ordersHistorySlice';
+} from '@slices/ordersHistorySlice/ordersHistorySlice';
 
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();

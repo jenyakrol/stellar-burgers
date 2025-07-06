@@ -1,4 +1,7 @@
-import { getFeed, getFeedOrders } from '@slices/ordersHistorySlice';
+import {
+  getFeed,
+  getFeedOrders
+} from '@slices/ordersHistorySlice/ordersHistorySlice';
 import { useDispatch, useSelector } from '@store';
 import { Preloader } from '@ui';
 import { FeedUI } from '@ui-pages';
