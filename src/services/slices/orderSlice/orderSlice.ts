@@ -1,10 +1,10 @@
 import { orderBurgerApi } from '@api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TOrder } from '@utils-types';
+import { TPlacedOrder } from '@utils-types';
 
 type OrderState = {
   orderRequest: boolean;
-  orderModalData: TOrder | null;
+  orderModalData: TPlacedOrder | null;
 };
 
 const initialState: OrderState = {
@@ -21,7 +21,10 @@ export const orderSlice = createSlice({
   name: 'order',
   initialState,
   reducers: {
-    setOrderModalData: (state, { payload }: PayloadAction<TOrder | null>) => {
+    setOrderModalData: (
+      state,
+      { payload }: PayloadAction<TPlacedOrder | null>
+    ) => {
       state.orderModalData = payload;
     }
   },
@@ -32,7 +35,7 @@ export const orderSlice = createSlice({
       })
       .addCase(
         placeOrderAction.fulfilled,
-        (state, { payload }: PayloadAction<TOrder>) => {
+        (state, { payload }: PayloadAction<TPlacedOrder>) => {
           state.orderRequest = false;
           state.orderModalData = payload;
         }

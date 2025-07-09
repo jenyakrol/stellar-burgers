@@ -20,7 +20,7 @@ export const handlersSuccess = [
           image_mobile:
             'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0941',
@@ -36,7 +36,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/meat-01-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/meat-01-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa093e',
@@ -52,7 +52,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/meat-03-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/meat-03-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0942',
@@ -68,7 +68,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/sauce-02-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/sauce-02-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0943',
@@ -84,7 +84,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/sauce-04-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/sauce-04-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa093f',
@@ -100,7 +100,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/meat-02-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/meat-02-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0940',
@@ -116,7 +116,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/meat-04-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/meat-04-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa093d',
@@ -131,7 +131,7 @@ export const handlersSuccess = [
           image_mobile:
             'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/bun-01-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0944',
@@ -147,7 +147,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/sauce-03-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/sauce-03-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0945',
@@ -163,7 +163,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/sauce-01-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/sauce-01-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0946',
@@ -179,7 +179,7 @@ export const handlersSuccess = [
             'https://code.s3.yandex.net/react/code/mineral_rings-mobile.png',
           image_large:
             'https://code.s3.yandex.net/react/code/mineral_rings-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0947',
@@ -193,7 +193,7 @@ export const handlersSuccess = [
           image: 'https://code.s3.yandex.net/react/code/sp_1.png',
           image_mobile: 'https://code.s3.yandex.net/react/code/sp_1-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/sp_1-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0948',
@@ -207,7 +207,7 @@ export const handlersSuccess = [
           image: 'https://code.s3.yandex.net/react/code/core.png',
           image_mobile: 'https://code.s3.yandex.net/react/code/core-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/core-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa0949',
@@ -222,7 +222,7 @@ export const handlersSuccess = [
           image_mobile:
             'https://code.s3.yandex.net/react/code/salad-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/salad-large.png',
-          __v: 0
+          
         },
         {
           _id: '643d69a5c3f7b9001cfa094a',
@@ -237,7 +237,7 @@ export const handlersSuccess = [
           image_mobile:
             'https://code.s3.yandex.net/react/code/cheese-mobile.png',
           image_large: 'https://code.s3.yandex.net/react/code/cheese-large.png',
-          __v: 0
+          
         }
       ]
     })
@@ -996,7 +996,7 @@ export const handlersSuccess = [
           createdAt: '2025-07-04T21:38:17.414Z',
           updatedAt: '2025-07-04T21:38:18.236Z',
           number: 83613,
-          __v: 0
+          
         }
       ]
     })
@@ -1021,7 +1021,7 @@ export const handlersSuccess = [
               'https://code.s3.yandex.net/react/code/bun-01-mobile.png',
             image_large:
               'https://code.s3.yandex.net/react/code/bun-01-large.png',
-            __v: 0
+            
           },
           {
             _id: '643d69a5c3f7b9001cfa093e',
@@ -1037,7 +1037,7 @@ export const handlersSuccess = [
               'https://code.s3.yandex.net/react/code/meat-03-mobile.png',
             image_large:
               'https://code.s3.yandex.net/react/code/meat-03-large.png',
-            __v: 0
+            
           }
         ],
         _id: '686a969c5a54df001b6dc278',

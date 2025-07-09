@@ -1,9 +1,4 @@
-import {
-  getFeedsApi,
-  getOrderByNumberApi,
-  getOrdersApi,
-  TFeedsResponse
-} from '@api';
+import { getFeedsApi, getOrderByNumberApi, getOrdersApi } from '@api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TFeed, TOrder } from '@utils-types';
 
@@ -61,7 +56,7 @@ export const ordersHistorySlice = createSlice({
       })
       .addCase(
         getFeedOrders.fulfilled,
-        (state, { payload }: PayloadAction<TFeedsResponse>) => {
+        (state, { payload }: PayloadAction<TFeed>) => {
           state.feed.orders = payload.orders;
           state.feed.total = payload.total;
           state.feed.totalToday = payload.totalToday;

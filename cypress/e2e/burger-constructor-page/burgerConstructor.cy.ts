@@ -15,19 +15,33 @@ describe('проверяем доступность приложения', () =>
     );
   });
 
+  afterEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+  });
+
   it('Проверка добавления ингредиента в конструктор', () => {
     cy.wait('@getIngredients').then(() => {
-      cy.get('[data-testid="643d69a5c3f7b9001cfa093c"]').find('button').click();
-      cy.get('[data-testid="643d69a5c3f7b9001cfa0941"]').find('button').click();
+      cy.get('[data-testid="selected-bun"]').should(
+        'have.text',
+        'Выберите булки'
+      );
 
-      cy.get('[data-testid="selected-bun"]')
-        .find('.constructor-element__text')
-        .should('have.text', 'Краторная булка N-200i (верх)');
-
-      cy.get('[data-testid="constructor-filling-643d69a5c3f7b9001cfa0941"]')
-        .find('.constructor-element__text')
-        .should('have.text', 'Биокотлета из марсианской Магнолии');
+      cy.get('[data-testid="constructor-filling"]')
+        .find('div')
+        .should('have.text', 'Выберите начинку');
     });
+
+    cy.get('[data-testid="643d69a5c3f7b9001cfa093c"]').find('button').click();
+    cy.get('[data-testid="643d69a5c3f7b9001cfa0941"]').find('button').click();
+
+    cy.get('[data-testid="selected-bun"]')
+      .find('.constructor-element__text')
+      .should('have.text', 'Краторная булка N-200i (верх)');
+
+    cy.get('[data-testid="constructor-filling-643d69a5c3f7b9001cfa0941"]')
+      .find('.constructor-element__text')
+      .should('have.text', 'Биокотлета из марсианской Магнолии');
   });
 
   it('Проверка модальных окон', () => {
@@ -39,7 +53,7 @@ describe('проверяем доступность приложения', () =>
       .should('be.visible')
       .within(() => {
         cy.get('h3').first().should('have.text', 'Детали ингредиента');
-
+        cy.get('h3').eq(1).should('have.text', 'Краторная булка N-200i');
         cy.get('button').click();
       });
 
@@ -63,6 +77,15 @@ describe('проверяем доступность приложения', () =>
     cy.get('[data-testid="order-button"]').find('button').click();
 
     cy.wait('@postOrder').then(() => {
+      cy.get('[data-testid="selected-bun"]').should(
+        'have.text',
+        'Выберите булки'
+      );
+
+      cy.get('[data-testid="constructor-filling"]')
+        .find('div')
+        .should('have.text', 'Выберите начинку');
+
       cy.get('#modals')
         .children()
         .first()
@@ -74,15 +97,6 @@ describe('проверяем доступность приложения', () =>
         });
 
       cy.get('#modals').children().should('not.exist');
-
-      cy.get('[data-testid="selected-bun"]').should(
-        'have.text',
-        'Выберите булки'
-      );
-
-      cy.get('[data-testid="constructor-filling"]')
-        .find('div')
-        .should('have.text', 'Выберите начинку');
     });
   });
 });

@@ -26,6 +26,12 @@ export type TOrder = {
   ingredients: string[];
 };
 
+export type TPlacedOrder = Omit<TOrder, 'ingredients'> & {
+  ingredients: TIngredient[];
+  owner: TUser & { createdAt: string; updatedAt: string };
+  price: number;
+};
+
 export type TOrdersData = {
   orders: TOrder[];
   total: number;

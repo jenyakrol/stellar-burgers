@@ -1,5 +1,12 @@
 import { setCookie, getCookie } from './cookie';
-import { TIngredient, TOrder, TOrdersData, TUser } from './types';
+import {
+  TFeed,
+  TIngredient,
+  TOrder,
+  TOrdersData,
+  TPlacedOrder,
+  TUser
+} from './types';
 
 const URL = process.env.BURGER_API_URL;
 
@@ -83,7 +90,7 @@ export const getFeedsApi = () =>
   fetch(`${URL}/orders/all`)
     .then((res) => checkResponse<TFeedsResponse>(res))
     .then((data) => {
-      if (data?.success) return data;
+      if (data?.success) return data as TFeed;
       return Promise.reject(data);
     });
 
@@ -100,7 +107,7 @@ export const getOrdersApi = () =>
   });
 
 type TNewOrderResponse = TServerResponse<{
-  order: TOrder;
+  order: TPlacedOrder;
   name: string;
 }>;
 

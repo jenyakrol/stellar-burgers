@@ -1,5 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { serverSuccess } from '../../../mock/node';
 import {
   getFeedOrders,
   getOrderAction,
@@ -8,13 +6,17 @@ import {
 } from './ordersHistorySlice';
 
 describe('Слайс истории заказов', () => {
-  beforeAll(() => {
-    serverSuccess.listen();
-  });
+  const initialState = {
+    userOrders: [],
+    feed: {
+      orders: [],
+      total: 0,
+      totalToday: 0
+    },
+    currentOpenedOrder: null
+  };
 
-  afterAll(() => {
-    serverSuccess.close();
-  });
+  const ordersHistoryReducer = ordersHistorySlice.reducer;
 
   test('Общая история заказов', async () => {
     const expectedFeed = {
@@ -682,17 +684,25 @@ describe('Слайс истории заказов', () => {
       totalToday: 51
     };
 
-    const store = configureStore({
-      reducer: ordersHistorySlice.reducer
-    });
+    const emptyFeed = {
+      orders: [],
+      total: 0,
+      totalToday: 0
+    };
 
-    const getFeedPromise = store.dispatch(getFeedOrders());
+    const pendingState = ordersHistoryReducer(
+      initialState,
+      getFeedOrders.pending('')
+    );
 
-    await getFeedPromise;
+    expect(pendingState.feed).toEqual(emptyFeed);
 
-    const { feed } = store.getState();
+    const fulfilledState = ordersHistoryReducer(
+      initialState,
+      getFeedOrders.fulfilled(expectedFeed, '')
+    );
 
-    expect(feed).toEqual(expectedFeed);
+    expect(fulfilledState.feed).toEqual(expectedFeed);
   });
 
   test('История заказов пользователя', async () => {
@@ -764,19 +774,12 @@ describe('Слайс истории заказов', () => {
       }
     ];
 
-    global.document = { ...global.document, cookie: 'accessToken=123' };
+    const fulfilledState = ordersHistoryReducer(
+      initialState,
+      getUserOrders.fulfilled(expectedOrders, '')
+    );
 
-    const store = configureStore({
-      reducer: ordersHistorySlice.reducer
-    });
-
-    const getFeedPromise = store.dispatch(getUserOrders());
-
-    await getFeedPromise;
-
-    const { userOrders } = store.getState();
-
-    expect(userOrders).toEqual(expectedOrders);
+    expect(fulfilledState.userOrders).toEqual(expectedOrders);
   });
 
   test('Получение конкретного заказа', async () => {
@@ -788,20 +791,14 @@ describe('Слайс истории заказов', () => {
       name: 'Флюоресцентный люминесцентный бургер',
       createdAt: '2025-07-04T21:38:17.414Z',
       updatedAt: '2025-07-04T21:38:18.236Z',
-      number: 83613,
-      __v: 0
+      number: 83613
     };
 
-    const store = configureStore({
-      reducer: ordersHistorySlice.reducer
-    });
+    const fulfilledState = ordersHistoryReducer(
+      initialState,
+      getOrderAction.fulfilled(expectedOrder, '', 83613)
+    );
 
-    const getOrderPromise = store.dispatch(getOrderAction(83613));
-
-    await getOrderPromise;
-
-    const { currentOpenedOrder } = store.getState();
-
-    expect(currentOpenedOrder).toEqual(expectedOrder);
+    expect(fulfilledState.currentOpenedOrder).toEqual(expectedOrder);
   });
 });
