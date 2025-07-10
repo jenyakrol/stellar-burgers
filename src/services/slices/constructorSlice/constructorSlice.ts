@@ -31,7 +31,7 @@ export const constructorSlice = createSlice({
     },
     removeConstructorItem: (
       state,
-      { payload }: PayloadAction<TConstructorIngredient>
+      { payload }: PayloadAction<{ id: string; type: string }>
     ) => {
       if (payload.type === 'bun') state.constructorItems.bun = null;
       else
@@ -69,5 +69,6 @@ export const { getConstructorItems } = constructorSlice.selectors;
 export const {
   addConstructorItem,
   removeConstructorItem,
-  swapBurgerIngredients
+  swapBurgerIngredients,
+  clearConstructor
 } = constructorSlice.actions;

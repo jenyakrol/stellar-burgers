@@ -1,6 +1,7 @@
 import { getIngredientsApi } from '@api';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TIngredient } from '@utils-types';
+import { AnyARecord } from 'dns';
 
 type ConstructorState = {
   ingredients: {
@@ -9,6 +10,7 @@ type ConstructorState = {
     sauces: TIngredient[];
   };
   loading: boolean;
+  error: any;
 };
 
 const initialState: ConstructorState = {
@@ -17,7 +19,8 @@ const initialState: ConstructorState = {
     mains: [],
     sauces: []
   },
-  loading: false
+  loading: false,
+  error: undefined
 };
 
 export const getIngredients = createAsyncThunk('ingredients/getAll', async () =>
@@ -32,9 +35,11 @@ export const ingredientsSlice = createSlice({
     builder
       .addCase(getIngredients.pending, (state) => {
         state.loading = true;
+        state.error = undefined;
       })
-      .addCase(getIngredients.rejected, (state) => {
+      .addCase(getIngredients.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
       })
       .addCase(getIngredients.fulfilled, (state, action) => {
         const buns =
@@ -46,6 +51,7 @@ export const ingredientsSlice = createSlice({
 
         state.ingredients = { buns, mains, sauces };
         state.loading = false;
+        state.error = undefined;
       });
   },
   selectors: {

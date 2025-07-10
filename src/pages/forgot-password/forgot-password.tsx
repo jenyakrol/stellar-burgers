@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { forgotPasswordApi } from '@api';
 import { ForgotPasswordUI } from '@ui-pages';
 import { useSelector } from '@store';
-import { getAuth } from '@slices/userSlice';
+import { getAuth } from '@slices/userSlice/userSlice';
 
 export const ForgotPassword: FC = () => {
   const [email, setEmail] = useState('');

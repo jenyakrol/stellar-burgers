@@ -4,11 +4,11 @@ import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from '@store';
-import { getUnsortedIngredients } from '@slices/ingredientsSlice';
+import { getUnsortedIngredients } from '@slices/ingredientsSlice/ingredientsSlice';
 import {
   getCurrentOpenedOrder,
   getOrderAction
-} from '@slices/ordersHistorySlice';
+} from '@slices/ordersHistorySlice/ordersHistorySlice';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();

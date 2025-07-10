@@ -1,16 +1,19 @@
 import { FC, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
-import { getAuth } from '@slices/userSlice';
+import { getAuth } from '@slices/userSlice/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from '@store';
-import { getConstructorItems } from '@slices/constructorSlice';
+import {
+  clearConstructor,
+  getConstructorItems
+} from '@slices/constructorSlice/constructorSlice';
 import {
   getOrderModalData,
   getOrderRequest,
   placeOrderAction,
   setOrderModalData
-} from '@slices/orderSlice';
+} from '@slices/orderSlice/orderSlice';
 
 export const BurgerConstructor: FC = () => {
   const navigate = useNavigate();
@@ -32,7 +35,9 @@ export const BurgerConstructor: FC = () => {
         constructorItems.bun!._id,
         ...constructorItems.ingredients.map((item) => item._id)
       ];
-      dispatch(placeOrderAction(currentOrderIngredients));
+      dispatch(placeOrderAction(currentOrderIngredients)).then((res) => {
+        if (res.type === 'order/post/fulfilled') dispatch(clearConstructor());
+      });
     }
   };
   const closeOrderModal = () => {

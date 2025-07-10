@@ -1,5 +1,5 @@
 import { updateUserApi } from '@api';
-import { getAuth, getUser, getUserAction } from '@slices/userSlice';
+import { getAuth, getUser, getUserAction } from '@slices/userSlice/userSlice';
 import { useDispatch, useSelector } from '@store';
 import { ProfileUI } from '@ui-pages';
 import { FC, SyntheticEvent, useEffect, useState } from 'react';
